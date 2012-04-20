@@ -79,10 +79,18 @@ public class MainWindow extends javax.swing.JFrame {
         file_Separator4 = new javax.swing.JPopupMenu.Separator();
         file_quit = new javax.swing.JMenuItem();
         entries_Menu = new javax.swing.JMenu();
-        entry_newEntry = new javax.swing.JMenuItem();
-        entry_cloneEntry = new javax.swing.JMenuItem();
+        entries_newEntry = new javax.swing.JMenuItem();
+        entries_cloneEntry = new javax.swing.JMenuItem();
         entries_editEntry = new javax.swing.JMenuItem();
         entries_deleteEntry = new javax.swing.JMenuItem();
+        entries_Separator1 = new javax.swing.JPopupMenu.Separator();
+        entries_copyUName = new javax.swing.JMenuItem();
+        entries_copyPswd = new javax.swing.JMenuItem();
+        entries_openUrl = new javax.swing.JMenuItem();
+        entries_copyUrl = new javax.swing.JMenuItem();
+        entries_Separator2 = new javax.swing.JPopupMenu.Separator();
+        entries_searchDatabase = new javax.swing.JMenuItem();
+        entries_searchGroup = new javax.swing.JMenuItem();
         groups_Menu = new javax.swing.JMenu();
         view_Menu = new javax.swing.JMenu();
         extras_Menu = new javax.swing.JMenu();
@@ -185,14 +193,14 @@ public class MainWindow extends javax.swing.JFrame {
 
         entries_Menu.setText("Entries");
 
-        entry_newEntry.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_Y, java.awt.event.InputEvent.CTRL_MASK));
-        entry_newEntry.setText("Add New Entry");
-        entry_newEntry.setActionCommand("Add New Entry");
-        entries_Menu.add(entry_newEntry);
+        entries_newEntry.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_Y, java.awt.event.InputEvent.CTRL_MASK));
+        entries_newEntry.setText("Add New Entry");
+        entries_newEntry.setActionCommand("Add New Entry");
+        entries_Menu.add(entries_newEntry);
 
-        entry_cloneEntry.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_K, java.awt.event.InputEvent.CTRL_MASK));
-        entry_cloneEntry.setText("Clone entry");
-        entries_Menu.add(entry_cloneEntry);
+        entries_cloneEntry.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_K, java.awt.event.InputEvent.CTRL_MASK));
+        entries_cloneEntry.setText("Clone entry");
+        entries_Menu.add(entries_cloneEntry);
 
         entries_editEntry.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.CTRL_MASK));
         entries_editEntry.setText("Edit Entry");
@@ -201,6 +209,32 @@ public class MainWindow extends javax.swing.JFrame {
         entries_deleteEntry.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_D, java.awt.event.InputEvent.CTRL_MASK));
         entries_deleteEntry.setText("Delete Entry");
         entries_Menu.add(entries_deleteEntry);
+        entries_Menu.add(entries_Separator1);
+
+        entries_copyUName.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_B, java.awt.event.InputEvent.CTRL_MASK));
+        entries_copyUName.setText("Copy Username To Clipboard");
+        entries_Menu.add(entries_copyUName);
+
+        entries_copyPswd.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.CTRL_MASK));
+        entries_copyPswd.setText("Copy Password To Clipboard");
+        entries_Menu.add(entries_copyPswd);
+
+        entries_openUrl.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.SHIFT_MASK | java.awt.event.InputEvent.CTRL_MASK));
+        entries_openUrl.setText("Open URL");
+        entries_Menu.add(entries_openUrl);
+
+        entries_copyUrl.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.CTRL_MASK));
+        entries_copyUrl.setText("Copy URL To Clipboard");
+        entries_Menu.add(entries_copyUrl);
+        entries_Menu.add(entries_Separator2);
+
+        entries_searchDatabase.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_G, java.awt.event.InputEvent.CTRL_MASK));
+        entries_searchDatabase.setText("Search In Database");
+        entries_Menu.add(entries_searchDatabase);
+
+        entries_searchGroup.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F, java.awt.event.InputEvent.CTRL_MASK));
+        entries_searchGroup.setText("Search In Group");
+        entries_Menu.add(entries_searchGroup);
 
         menuBar.add(entries_Menu);
 
@@ -278,12 +312,20 @@ public class MainWindow extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu entries_Menu;
+    private javax.swing.JPopupMenu.Separator entries_Separator1;
+    private javax.swing.JPopupMenu.Separator entries_Separator2;
+    private javax.swing.JMenuItem entries_cloneEntry;
+    private javax.swing.JMenuItem entries_copyPswd;
+    private javax.swing.JMenuItem entries_copyUName;
+    private javax.swing.JMenuItem entries_copyUrl;
     private javax.swing.JMenuItem entries_deleteEntry;
     private javax.swing.JMenuItem entries_editEntry;
+    private javax.swing.JMenuItem entries_newEntry;
+    private javax.swing.JMenuItem entries_openUrl;
+    private javax.swing.JMenuItem entries_searchDatabase;
+    private javax.swing.JMenuItem entries_searchGroup;
     private java.awt.List entryList;
     private javax.swing.JPanel entryPane;
-    private javax.swing.JMenuItem entry_cloneEntry;
-    private javax.swing.JMenuItem entry_newEntry;
     private javax.swing.JMenu extras_Menu;
     private javax.swing.JMenuItem file_DatabaseSettings;
     private javax.swing.JMenu file_Menu;
