@@ -98,6 +98,7 @@
         <Menu class="javax.swing.JMenu" name="entries_Menu">
           <Properties>
             <Property name="text" type="java.lang.String" value="Entries"/>
+            <Property name="enabled" type="boolean" value="false"/>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="entries_newEntry">
@@ -190,6 +191,7 @@
         <Menu class="javax.swing.JMenu" name="groups_Menu">
           <Properties>
             <Property name="text" type="java.lang.String" value="Groups"/>
+            <Property name="enabled" type="boolean" value="false"/>
           </Properties>
         </Menu>
         <Menu class="javax.swing.JMenu" name="view_Menu">
@@ -201,6 +203,16 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Extras"/>
           </Properties>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="extras_pswdGenerator">
+              <Properties>
+                <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
+                  <KeyStroke key="Ctrl+P"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Password Generator"/>
+              </Properties>
+            </MenuItem>
+          </SubComponents>
         </Menu>
         <Menu class="javax.swing.JMenu" name="help_Menu">
           <Properties>

@@ -94,6 +94,7 @@ public class MainWindow extends javax.swing.JFrame {
         groups_Menu = new javax.swing.JMenu();
         view_Menu = new javax.swing.JMenu();
         extras_Menu = new javax.swing.JMenu();
+        extras_pswdGenerator = new javax.swing.JMenuItem();
         help_Menu = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -192,6 +193,7 @@ public class MainWindow extends javax.swing.JFrame {
         menuBar.add(file_Menu);
 
         entries_Menu.setText("Entries");
+        entries_Menu.setEnabled(false);
 
         entries_newEntry.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_Y, java.awt.event.InputEvent.CTRL_MASK));
         entries_newEntry.setText("Add New Entry");
@@ -239,12 +241,18 @@ public class MainWindow extends javax.swing.JFrame {
         menuBar.add(entries_Menu);
 
         groups_Menu.setText("Groups");
+        groups_Menu.setEnabled(false);
         menuBar.add(groups_Menu);
 
         view_Menu.setText("View");
         menuBar.add(view_Menu);
 
         extras_Menu.setText("Extras");
+
+        extras_pswdGenerator.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.CTRL_MASK));
+        extras_pswdGenerator.setText("Password Generator");
+        extras_Menu.add(extras_pswdGenerator);
+
         menuBar.add(extras_Menu);
 
         help_Menu.setText("Help");
@@ -308,6 +316,9 @@ public class MainWindow extends javax.swing.JFrame {
         groupTreeView.removeAll();
         
         currentDocument = new Document(newKey, newKeyFile);
+        
+        entries_Menu.setEnabled(true);
+        groups_Menu.setEnabled(true);
     }//GEN-LAST:event_file_newDatabaseMousePressed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -327,6 +338,7 @@ public class MainWindow extends javax.swing.JFrame {
     private java.awt.List entryList;
     private javax.swing.JPanel entryPane;
     private javax.swing.JMenu extras_Menu;
+    private javax.swing.JMenuItem extras_pswdGenerator;
     private javax.swing.JMenuItem file_DatabaseSettings;
     private javax.swing.JMenu file_Menu;
     private javax.swing.JMenuItem file_Save;

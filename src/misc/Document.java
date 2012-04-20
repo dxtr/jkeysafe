@@ -27,5 +27,23 @@ public class Document {
     public Document(char[] newPassword, Keyfile newKeyFile, List<Group> newGroups)
         { password = newPassword; keyfile = newKeyFile; groups = newGroups; }
     
+    public String getPath() { return path; }
+    public char[] getPassword() { return password; }
+    public Keyfile getKeyFile() { return keyfile; }
+    public List<Group> getGroups() { return groups; }
     
+    public void setPath(String newPath) { path = newPath; }
+    public void setPassword(char[] newPassword) { password = newPassword; }
+    public void setKeyFile(Keyfile newKeyFile) { keyfile = newKeyFile; }
+    
+    public void addGroup(Group newGroup) { groups.add(newGroup); }
+    public void delGroup(Group rmGroup) { groups.remove(rmGroup); }
+    public void delGroup(String name) {
+        for (Group g : groups) {
+            if (g.getName().equalsIgnoreCase(name)) {
+                groups.remove(g);
+                break;
+            }
+        }
+    }
 }
