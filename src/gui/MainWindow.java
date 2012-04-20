@@ -79,6 +79,10 @@ public class MainWindow extends javax.swing.JFrame {
         file_Separator4 = new javax.swing.JPopupMenu.Separator();
         file_quit = new javax.swing.JMenuItem();
         entries_Menu = new javax.swing.JMenu();
+        entry_newEntry = new javax.swing.JMenuItem();
+        entry_cloneEntry = new javax.swing.JMenuItem();
+        entries_editEntry = new javax.swing.JMenuItem();
+        entries_deleteEntry = new javax.swing.JMenuItem();
         groups_Menu = new javax.swing.JMenu();
         view_Menu = new javax.swing.JMenu();
         extras_Menu = new javax.swing.JMenu();
@@ -180,6 +184,24 @@ public class MainWindow extends javax.swing.JFrame {
         menuBar.add(file_Menu);
 
         entries_Menu.setText("Entries");
+
+        entry_newEntry.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_Y, java.awt.event.InputEvent.CTRL_MASK));
+        entry_newEntry.setText("Add New Entry");
+        entry_newEntry.setActionCommand("Add New Entry");
+        entries_Menu.add(entry_newEntry);
+
+        entry_cloneEntry.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_K, java.awt.event.InputEvent.CTRL_MASK));
+        entry_cloneEntry.setText("Clone entry");
+        entries_Menu.add(entry_cloneEntry);
+
+        entries_editEntry.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.CTRL_MASK));
+        entries_editEntry.setText("Edit Entry");
+        entries_Menu.add(entries_editEntry);
+
+        entries_deleteEntry.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_D, java.awt.event.InputEvent.CTRL_MASK));
+        entries_deleteEntry.setText("Delete Entry");
+        entries_Menu.add(entries_deleteEntry);
+
         menuBar.add(entries_Menu);
 
         groups_Menu.setText("Groups");
@@ -256,8 +278,12 @@ public class MainWindow extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu entries_Menu;
+    private javax.swing.JMenuItem entries_deleteEntry;
+    private javax.swing.JMenuItem entries_editEntry;
     private java.awt.List entryList;
     private javax.swing.JPanel entryPane;
+    private javax.swing.JMenuItem entry_cloneEntry;
+    private javax.swing.JMenuItem entry_newEntry;
     private javax.swing.JMenu extras_Menu;
     private javax.swing.JMenuItem file_DatabaseSettings;
     private javax.swing.JMenu file_Menu;
