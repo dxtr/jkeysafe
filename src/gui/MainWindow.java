@@ -4,10 +4,9 @@
  */
 package gui;
 
-import javax.swing.tree.TreeModel;
-import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.event.TreeModelEvent;
 import javax.swing.event.TreeModelListener;
+import javax.swing.tree.TreeModel;
 import misc.Document;
 import misc.Keyfile;
 
@@ -55,13 +54,10 @@ public class MainWindow extends javax.swing.JFrame {
     private void initComponents() {
 
         toolBar = new javax.swing.JToolBar();
-        entryPane = new javax.swing.JPanel();
-        entryList = new java.awt.List();
-        groupScrollPane = new javax.swing.JScrollPane();
-        groupTreeView = new javax.swing.JTree();
-        infoPane = new javax.swing.JPanel();
-        infoScrollPane = new javax.swing.JScrollPane();
-        infoTextArea = new javax.swing.JTextArea();
+        toolBar_NewDatabase = new javax.swing.JButton();
+        toolBar_OpenDatabase = new javax.swing.JButton();
+        toolBar_SaveDatabase = new javax.swing.JButton();
+        tabPane = new javax.swing.JTabbedPane();
         menuBar = new javax.swing.JMenuBar();
         file_Menu = new javax.swing.JMenu();
         file_newDatabase = new javax.swing.JMenuItem();
@@ -102,40 +98,28 @@ public class MainWindow extends javax.swing.JFrame {
 
         toolBar.setRollover(true);
 
-        javax.swing.GroupLayout entryPaneLayout = new javax.swing.GroupLayout(entryPane);
-        entryPane.setLayout(entryPaneLayout);
-        entryPaneLayout.setHorizontalGroup(
-            entryPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(entryPaneLayout.createSequentialGroup()
-                .addComponent(entryList, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        entryPaneLayout.setVerticalGroup(
-            entryPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(entryList, javax.swing.GroupLayout.DEFAULT_SIZE, 256, Short.MAX_VALUE)
-        );
+        toolBar_NewDatabase.setText("New Database");
+        toolBar_NewDatabase.setFocusable(false);
+        toolBar_NewDatabase.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        toolBar_NewDatabase.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        toolBar_NewDatabase.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                event_newDatabase(evt);
+            }
+        });
+        toolBar.add(toolBar_NewDatabase);
 
-        javax.swing.tree.DefaultMutableTreeNode treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("*");
-        groupTreeView.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
-        groupTreeView.setToolTipText("");
-        groupTreeView.setName("");
-        groupScrollPane.setViewportView(groupTreeView);
-        groupTreeView.getAccessibleContext().setAccessibleName("");
+        toolBar_OpenDatabase.setText("Open Database");
+        toolBar_OpenDatabase.setFocusable(false);
+        toolBar_OpenDatabase.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        toolBar_OpenDatabase.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        toolBar.add(toolBar_OpenDatabase);
 
-        infoTextArea.setColumns(20);
-        infoTextArea.setRows(5);
-        infoScrollPane.setViewportView(infoTextArea);
-
-        javax.swing.GroupLayout infoPaneLayout = new javax.swing.GroupLayout(infoPane);
-        infoPane.setLayout(infoPaneLayout);
-        infoPaneLayout.setHorizontalGroup(
-            infoPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(infoScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 596, Short.MAX_VALUE)
-        );
-        infoPaneLayout.setVerticalGroup(
-            infoPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(infoScrollPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 139, Short.MAX_VALUE)
-        );
+        toolBar_SaveDatabase.setText("Save Database");
+        toolBar_SaveDatabase.setFocusable(false);
+        toolBar_SaveDatabase.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        toolBar_SaveDatabase.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        toolBar.add(toolBar_SaveDatabase);
 
         file_Menu.setText("File");
 
@@ -143,7 +127,7 @@ public class MainWindow extends javax.swing.JFrame {
         file_newDatabase.setText("New Database");
         file_newDatabase.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                file_newDatabaseMousePressed(evt);
+                event_newDatabase(evt);
             }
         });
         file_Menu.add(file_newDatabase);
@@ -193,11 +177,19 @@ public class MainWindow extends javax.swing.JFrame {
         menuBar.add(file_Menu);
 
         entries_Menu.setText("Entries");
-        entries_Menu.setEnabled(false);
+        entries_Menu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                event_newEntry(evt);
+            }
+        });
 
         entries_newEntry.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_Y, java.awt.event.InputEvent.CTRL_MASK));
         entries_newEntry.setText("Add New Entry");
-        entries_newEntry.setActionCommand("Add New Entry");
+        entries_newEntry.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                event_newEntry(evt);
+            }
+        });
         entries_Menu.add(entries_newEntry);
 
         entries_cloneEntry.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_K, java.awt.event.InputEvent.CTRL_MASK));
@@ -264,29 +256,15 @@ public class MainWindow extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(toolBar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(groupScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(entryPane, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(infoPane, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addContainerGap())))
+            .addComponent(toolBar, javax.swing.GroupLayout.DEFAULT_SIZE, 774, Short.MAX_VALUE)
+            .addComponent(tabPane)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(toolBar, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(groupScrollPane)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(entryPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(infoPane, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap())
+                .addComponent(tabPane, javax.swing.GroupLayout.DEFAULT_SIZE, 419, Short.MAX_VALUE))
         );
 
         pack();
@@ -295,31 +273,35 @@ public class MainWindow extends javax.swing.JFrame {
     private void file_openDatabaseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_file_openDatabaseActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_file_openDatabaseActionPerformed
-
-    private void file_newDatabaseMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_file_newDatabaseMousePressed
+    
+    private void event_newDatabase(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_event_newDatabase
         char[] newKey;
         Keyfile newKeyFile;
         TreeModel newTree;
-        
-        if (currentDocument != null) {
-            /* TODO: Ask if we should save the current document */
-        }
+        Document newDocument;
+        DocumentPane newDocumentPane;
         
         System.out.println("omglolwut");
         NewMasterKey nmk = new NewMasterKey(this, true);
-        nmk.setTitle("New Database");
+        nmk.setTitle(NewMasterKey.TITLE);
         nmk.setVisible(true);
         newKey = nmk.getKey();
         newKeyFile = nmk.getKeyFile();
         nmk.dispose();
         
-        groupTreeView.removeAll();
+        //groupTreeView.removeAll();
         
-        currentDocument = new Document(newKey, newKeyFile);
+        if (nmk.getSuccess()) {
+            newDocument = new Document(newKey, newKeyFile);
+            newDocumentPane = new DocumentPane();
         
-        entries_Menu.setEnabled(true);
-        groups_Menu.setEnabled(true);
-    }//GEN-LAST:event_file_newDatabaseMousePressed
+            tabPane.addTab("New Database", newDocumentPane);
+        }        
+    }//GEN-LAST:event_event_newDatabase
+
+    private void event_newEntry(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_event_newEntry
+        System.out.println("lol new entry");
+    }//GEN-LAST:event_event_newEntry
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu entries_Menu;
@@ -335,8 +317,6 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JMenuItem entries_openUrl;
     private javax.swing.JMenuItem entries_searchDatabase;
     private javax.swing.JMenuItem entries_searchGroup;
-    private java.awt.List entryList;
-    private javax.swing.JPanel entryPane;
     private javax.swing.JMenu extras_Menu;
     private javax.swing.JMenuItem extras_pswdGenerator;
     private javax.swing.JMenuItem file_DatabaseSettings;
@@ -354,15 +334,14 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JMenuItem file_openDatabase;
     private javax.swing.JMenuItem file_quit;
     private javax.swing.JMenuItem file_saveAs;
-    private javax.swing.JScrollPane groupScrollPane;
-    private javax.swing.JTree groupTreeView;
     private javax.swing.JMenu groups_Menu;
     private javax.swing.JMenu help_Menu;
-    private javax.swing.JPanel infoPane;
-    private javax.swing.JScrollPane infoScrollPane;
-    private javax.swing.JTextArea infoTextArea;
     private javax.swing.JMenuBar menuBar;
+    private javax.swing.JTabbedPane tabPane;
     private javax.swing.JToolBar toolBar;
+    private javax.swing.JButton toolBar_NewDatabase;
+    private javax.swing.JButton toolBar_OpenDatabase;
+    private javax.swing.JButton toolBar_SaveDatabase;
     private javax.swing.JMenu view_Menu;
     // End of variables declaration//GEN-END:variables
 }

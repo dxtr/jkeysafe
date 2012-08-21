@@ -1,6 +1,4 @@
 import gui.MainWindow;
-import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
 
 public class jkeysafe {
 	public jkeysafe(String[] args) {
@@ -14,11 +12,6 @@ public class jkeysafe {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-            try {
-                UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-            } catch (javax.swing.UnsupportedLookAndFeelException | java.lang.ClassNotFoundException | java.lang.InstantiationException | java.lang.IllegalAccessException e) {
-                /* TODO: Log */
-            }
             jkeysafe main = new jkeysafe(args);
         }
 }

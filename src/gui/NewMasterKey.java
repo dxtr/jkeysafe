@@ -20,6 +20,10 @@ import java.io.IOException;
 public class NewMasterKey extends javax.swing.JDialog {
     private char[] key;
     private Keyfile keyfile;
+    private boolean success;
+    
+    private char DEFAULT_PSWDCHAR;
+    public static String TITLE = "New Database";
     
     /**
      * Creates new form NewMasterKey
@@ -27,11 +31,14 @@ public class NewMasterKey extends javax.swing.JDialog {
     public NewMasterKey(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        DEFAULT_PSWDCHAR = passwordField.getEchoChar();
+        System.out.println(DEFAULT_PSWDCHAR);
         keyfile = new Keyfile();
     }
     
     public char[] getKey() { return key; }
     public Keyfile getKeyFile() { return keyfile; }
+    public boolean getSuccess() { return success; }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -228,7 +235,9 @@ public class NewMasterKey extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void cancelButtonMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancelButtonMousePressed
+        System.out.println("Cancel pressed!");
         this.setVisible(false);
+        this.success = false;
     }//GEN-LAST:event_cancelButtonMousePressed
 
     private void okButtonMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_okButtonMousePressed
@@ -256,6 +265,7 @@ public class NewMasterKey extends javax.swing.JDialog {
         }
         
         this.setVisible(false);
+        this.success = true;
     }//GEN-LAST:event_okButtonMousePressed
 
     private void keyFileCheckBoxStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_keyFileCheckBoxStateChanged
@@ -281,8 +291,8 @@ public class NewMasterKey extends javax.swing.JDialog {
     }//GEN-LAST:event_passwordCheckBoxStateChanged
 
     private void toggleVisibleMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_toggleVisibleMousePressed
-        if (this.passwordField.getEchoChar() == '\u25cf') passwordField.setEchoChar((char)0);
-        else passwordField.setEchoChar('\u25cf');
+        if (passwordField.getEchoChar() == DEFAULT_PSWDCHAR) passwordField.setEchoChar((char)0);
+        else passwordField.setEchoChar(DEFAULT_PSWDCHAR);
     }//GEN-LAST:event_toggleVisibleMousePressed
 
     private void browseKeyFileMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_browseKeyFileMousePressed
