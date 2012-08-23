@@ -17,7 +17,7 @@
                 <Property name="text" type="java.lang.String" value="New Database"/>
               </Properties>
               <Events>
-                <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="event_newDatabase"/>
+                <EventHandler event="mouseReleased" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="event_newDatabase"/>
               </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="file_openDatabase">
@@ -28,7 +28,7 @@
                 <Property name="text" type="java.lang.String" value="Open Database"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="file_openDatabaseActionPerformed"/>
+                <EventHandler event="mouseReleased" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="event_openDatabase"/>
               </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="file_closeDatabase">
@@ -38,6 +38,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Close Database"/>
               </Properties>
+              <Events>
+                <EventHandler event="mouseReleased" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="event_closeDatabase"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JPopupMenu$Separator" name="file_Separator1">
             </MenuItem>
@@ -48,6 +51,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Save"/>
               </Properties>
+              <Events>
+                <EventHandler event="mouseReleased" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="event_save"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="file_saveAs">
               <Properties>
@@ -56,6 +62,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Save As"/>
               </Properties>
+              <Events>
+                <EventHandler event="mouseReleased" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="event_saveAs"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JPopupMenu$Separator" name="file_Separator2">
             </MenuItem>
@@ -258,7 +267,7 @@
           <Group type="102" alignment="0" attributes="0">
               <Component id="toolBar" min="-2" pref="25" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="tabPane" pref="419" max="32767" attributes="0"/>
+              <Component id="tabPane" min="-2" pref="419" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>

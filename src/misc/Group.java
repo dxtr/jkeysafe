@@ -35,4 +35,17 @@ public class Group {
     public void addEntries(List<Entry> newEntries) {
         for (Entry ne : newEntries) { entries.add(ne); }
     }
+    
+    public Object getChildAt(int index) { return subgroups.get(index); }
+    public Object getIndexOfChild(Group child) {
+        int index = 0;
+        for (Group i : subgroups) {
+            if (i == child) {
+                break;
+            } else {
+                ++index;
+            }
+        }
+        return index;
+    }
 }

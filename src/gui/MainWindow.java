@@ -126,7 +126,7 @@ public class MainWindow extends javax.swing.JFrame {
         file_newDatabase.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_N, java.awt.event.InputEvent.CTRL_MASK));
         file_newDatabase.setText("New Database");
         file_newDatabase.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
                 event_newDatabase(evt);
             }
         });
@@ -134,24 +134,39 @@ public class MainWindow extends javax.swing.JFrame {
 
         file_openDatabase.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_O, java.awt.event.InputEvent.CTRL_MASK));
         file_openDatabase.setText("Open Database");
-        file_openDatabase.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                file_openDatabaseActionPerformed(evt);
+        file_openDatabase.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                event_openDatabase(evt);
             }
         });
         file_Menu.add(file_openDatabase);
 
         file_closeDatabase.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_W, java.awt.event.InputEvent.CTRL_MASK));
         file_closeDatabase.setText("Close Database");
+        file_closeDatabase.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                event_closeDatabase(evt);
+            }
+        });
         file_Menu.add(file_closeDatabase);
         file_Menu.add(file_Separator1);
 
         file_Save.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_MASK));
         file_Save.setText("Save");
+        file_Save.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                event_save(evt);
+            }
+        });
         file_Menu.add(file_Save);
 
         file_saveAs.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.SHIFT_MASK | java.awt.event.InputEvent.CTRL_MASK));
         file_saveAs.setText("Save As");
+        file_saveAs.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                event_saveAs(evt);
+            }
+        });
         file_Menu.add(file_saveAs);
         file_Menu.add(file_Separator2);
 
@@ -264,15 +279,11 @@ public class MainWindow extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(toolBar, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tabPane, javax.swing.GroupLayout.DEFAULT_SIZE, 419, Short.MAX_VALUE))
+                .addComponent(tabPane, javax.swing.GroupLayout.PREFERRED_SIZE, 419, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void file_openDatabaseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_file_openDatabaseActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_file_openDatabaseActionPerformed
     
     private void event_newDatabase(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_event_newDatabase
         char[] newKey;
@@ -281,7 +292,6 @@ public class MainWindow extends javax.swing.JFrame {
         Document newDocument;
         DocumentPane newDocumentPane;
         
-        System.out.println("omglolwut");
         NewMasterKey nmk = new NewMasterKey(this, true);
         nmk.setTitle(NewMasterKey.TITLE);
         nmk.setVisible(true);
@@ -302,6 +312,22 @@ public class MainWindow extends javax.swing.JFrame {
     private void event_newEntry(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_event_newEntry
         System.out.println("lol new entry");
     }//GEN-LAST:event_event_newEntry
+
+    private void event_openDatabase(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_event_openDatabase
+        // TODO
+    }//GEN-LAST:event_event_openDatabase
+
+    private void event_closeDatabase(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_event_closeDatabase
+        // TODO add your handling code here:
+    }//GEN-LAST:event_event_closeDatabase
+
+    private void event_save(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_event_save
+        // TODO add your handling code here:
+    }//GEN-LAST:event_event_save
+
+    private void event_saveAs(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_event_saveAs
+        // TODO add your handling code here:
+    }//GEN-LAST:event_event_saveAs
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu entries_Menu;
